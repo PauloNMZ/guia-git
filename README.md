@@ -15,4 +15,4 @@ Guia em HTML/CSS com roteiro didático de Git em português, incluindo conceitos
 - Não há dependências externas; basta abrir o HTML.
 
 ## Créditos
-- Conteúdo original baseado no tutorial de **Alwex** (Alex Donega), com ajustes e melhorias visuais/organizacionais.
+- Conteúdo original baseado no tutorial de ** (Alex Donega) **, com ajustes e melhorias visuais/organizacionais.
