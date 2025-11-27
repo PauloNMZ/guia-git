@@ -1,0 +1,481 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guia completo e didático de Git com exemplos práticos, analogias e passo a passo em português.">
+    <title>Git na Prática - Guia Completo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚀 Git na Prática</h1>
+            <p>Guia completo e didático para aprender Git do zero, usando analogias simples</p>
+        </div>
+    </header>
+
+    <nav aria-label="Seções do guia">
+        <ul role="tablist">
+            <li><button id="tab-conceitos" class="nav-btn active" data-section="conceitos" aria-controls="conceitos" aria-selected="true" role="tab">Conceitos</button></li>
+            <li><button id="tab-analogia" class="nav-btn" data-section="analogia" aria-controls="analogia" aria-selected="false" role="tab">Analogia dos Correios</button></li>
+            <li><button id="tab-fluxo" class="nav-btn" data-section="fluxo" aria-controls="fluxo" aria-selected="false" role="tab">Fluxo de Trabalho</button></li>
+            <li><button id="tab-comandos" class="nav-btn" data-section="comandos" aria-controls="comandos" aria-selected="false" role="tab">Comandos Essenciais</button></li>
+            <li><button id="tab-conflitos" class="nav-btn" data-section="conflitos" aria-controls="conflitos" aria-selected="false" role="tab">Resolução de Conflitos</button></li>
+            <li><button id="tab-praticas" class="nav-btn" data-section="praticas" aria-controls="praticas" aria-selected="false" role="tab">Boas Práticas</button></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <!-- CONCEITOS -->
+        <section id="conceitos" class="active" role="tabpanel" aria-labelledby="tab-conceitos">
+            <div class="card">
+                <h2><span class="emoji">📚</span>Conceitos Básicos: Git vs GitHub</h2>
+                <p>Entender a diferença entre Git e GitHub é fundamental para começar sua jornada.</p>
+            </div>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>🔧 Git</h4>
+                    <p><strong>Sistema de Controle de Versão</strong><br>Ferramenta que roda no seu computador. Mantém histórico de todas as mudanças que você faz no seu código. Funciona offline.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>☁️ GitHub</h4>
+                    <p><strong>Plataforma na Nuvem</strong><br>Serviço online que hospeda seus repositórios Git. Permite compartilhar código, colaborar e trabalhar em equipe. Funciona apenas online.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>📦 Repositório</h4>
+                    <p><strong>Pasta do Projeto</strong><br>Pasta que contém seu projeto e todo o histórico de versões. Pode ser local (sua máquina) ou remoto (GitHub).</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Por que aprender Git?</h3>
+            <ul class="list-secondary">
+                    <li>✅ <strong>Histórico completo:</strong> Veja todas as mudanças já feitas</li>
+                    <li>✅ <strong>Colaboração:</strong> Trabalhe em equipe sem conflitos</li>
+                    <li>✅ <strong>Segurança:</strong> Recupere código antigo se necessário</li>
+                    <li>✅ <strong>Profissionalismo:</strong> Essencial para qualquer desenvolvedor</li>
+                    <li>✅ <strong>Ramificação:</strong> Trabalhe em múltiplas features simultaneamente</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ANALOGIA DOS CORREIOS -->
+        <section id="analogia" role="tabpanel" aria-labelledby="tab-analogia" hidden>
+            <div class="card">
+                <h2><span class="emoji">📮</span>Analogia dos Correios</h2>
+                <p>A melhor forma de entender Git é pensar nele como um sistema de Correios. Vamos comparar o fluxo de envio de uma carta com o fluxo do Git!</p>
+            </div>
+
+            <div class="analogy-box">
+                <strong>🔄 O Fluxo Completo: Letra → Envelope → Correios → Destino</strong>
+                <p>Assim como você escreve uma carta, coloca no envelope, leva aos Correios e eles entregam na casa da pessoa, o Git funciona com: adicionar arquivos, fazer commit, enviar para repositório remoto.</p>
+            </div>
+
+            <div class="feature-list">
+                <div class="feature-item feature-item-accent">
+                    <h4>📝 Escrever a Carta</h4>
+                    <p><strong>Equivalente: Modificar Arquivos</strong><br>Você modifica seus arquivos de código. Ainda não foi "enviado".</p>
+                    <div class="command-box"><code>Seus arquivos .js, .py, .html modificados</code></div>
+                </div>
+
+                <div class="feature-item feature-item-primary">
+                    <h4>✉️ Colocar no Envelope</h4>
+                    <p><strong>Equivalente: git add</strong><br>Você prepara os arquivos para envio usando <span class="code-highlight">git add</span></p>
+                    <div class="command-box"><code>git add arquivo.js</code></div>
+                    <div class="command-box"><code>git add .</code></div>
+                </div>
+
+                <div class="feature-item feature-item-success">
+                    <h4>📮 Levar aos Correios & Lacrar</h4>
+                    <p><strong>Equivalente: git commit</strong><br>Você registra as mudanças com uma mensagem descritiva.</p>
+                    <div class="command-box"><code>git commit -m "Adicionar novo recurso"</code></div>
+                </div>
+
+                <div class="feature-item feature-item-danger">
+                    <h4>🚀 Enviar para o Destino</h4>
+                    <p><strong>Equivalente: git push</strong><br>Você envia o commit para o repositório remoto (GitHub).</p>
+                    <div class="command-box"><code>git push origin main</code></div>
+                </div>
+            </div>
+
+            <div class="alert alert-info">
+                <strong>💡 Dica importante:</strong> Você pode fazer vários <span class="code-highlight">git add</span> e <span class="code-highlight">git commit</span> ANTES de fazer <span class="code-highlight">git push</span>. É como separar várias cartas antes de levar aos Correios!
+            </div>
+        </section>
+
+        <!-- FLUXO DE TRABALHO -->
+        <section id="fluxo" role="tabpanel" aria-labelledby="tab-fluxo" hidden>
+            <div class="card">
+                <h2><span class="emoji">🔄</span>Fluxo Completo de Trabalho</h2>
+                <p>Veja passo a passo como um projeto típico é versionado com Git.</p>
+            </div>
+
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Criar/Clonar um Repositório</h4>
+                        <p>Comece um novo projeto ou clone um existente do GitHub.</p>
+                        <div class="command-box"><code>git init</code></div>
+                        <p class="note-text">ou</p>
+                        <div class="command-box"><code>git clone https://github.com/usuario/projeto.git</code></div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Modificar Seus Arquivos</h4>
+                        <p>Fazer mudanças no seu código como sempre faz.</p>
+                        <div class="alert alert-info">Neste momento, o Git já está observando as mudanças!</div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Verificar Status</h4>
+                        <p>Veja o que você modificou.</p>
+                        <div class="command-box"><code>git status</code></div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Adicionar Arquivos (Staging)</h4>
+                        <p>Prepare os arquivos para o commit.</p>
+                        <div class="command-box"><code>git add .</code></div>
+                        <p class="note-text"><strong>ou adicione arquivos específicos:</strong></p>
+                        <div class="command-box"><code>git add src/index.js</code></div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Fazer o Commit</h4>
+                        <p>Registre suas mudanças com uma mensagem descritiva.</p>
+                        <div class="command-box"><code>git commit -m "Descrição clara do que foi feito"</code></div>
+                        <div class="alert alert-success"><strong>✅ Bom:</strong> "Adicionar validação de email"<br><strong>❌ Ruim:</strong> "alteracoes"</div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h4>Enviar para Remoto (Push)</h4>
+                        <p>Envie seu commit para o repositório no GitHub.</p>
+                        <div class="command-box"><code>git push origin main</code></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ Importante:</strong> Sempre faça <span class="code-highlight">git pull</span> antes de começar a trabalhar para atualizar sua máquina local!
+            </div>
+        </section>
+
+        <!-- COMANDOS ESSENCIAIS -->
+        <section id="comandos" role="tabpanel" aria-labelledby="tab-comandos" hidden>
+            <div class="card">
+                <h2><span class="emoji">⌨️</span>Comandos Essenciais do Dia a Dia</h2>
+                <p>Os comandos que você vai usar 99% do tempo no seu trabalho.</p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Comando</th>
+                        <th>O que faz</th>
+                        <th>Exemplo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>git init</strong></td>
+                        <td>Inicia um novo repositório</td>
+                        <td><code>git init meu-projeto</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git clone</strong></td>
+                        <td>Copia um repositório remoto</td>
+                        <td><code>git clone &lt;url&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git status</strong></td>
+                        <td>Mostra arquivos modificados</td>
+                        <td><code>git status</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git add</strong></td>
+                        <td>Adiciona arquivos para commit</td>
+                        <td><code>git add . ou git add arquivo.js</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git commit</strong></td>
+                        <td>Registra as mudanças</td>
+                        <td><code>git commit -m "mensagem"</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git push</strong></td>
+                        <td>Envia commits para remoto</td>
+                        <td><code>git push origin main</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git pull</strong></td>
+                        <td>Atualiza repositório local</td>
+                        <td><code>git pull origin main</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git branch</strong></td>
+                        <td>Cria/lista branches</td>
+                        <td><code>git branch feature-nova</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git checkout</strong></td>
+                        <td>Muda de branch</td>
+                        <td><code>git checkout feature-nova</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git merge</strong></td>
+                        <td>Mescla branches</td>
+                        <td><code>git merge feature-nova</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git log</strong></td>
+                        <td>Vê histórico de commits</td>
+                        <td><code>git log --oneline</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>git diff</strong></td>
+                        <td>Vê diferenças entre versões</td>
+                        <td><code>git diff</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="card">
+                <h3>Comandos Úteis Avançados</h3>
+                <ul class="list-secondary">
+                    <li><span class="code-highlight">git stash</span> - Guarda mudanças temporariamente</li>
+                    <li><span class="code-highlight">git reset</span> - Desfaz commits</li>
+                    <li><span class="code-highlight">git revert</span> - Reverte um commit mantendo histórico</li>
+                    <li><span class="code-highlight">git tag</span> - Cria versões/releases</li>
+                    <li><span class="code-highlight">git remote</span> - Gerencia repositórios remotos</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- RESOLUÇÃO DE CONFLITOS -->
+        <section id="conflitos" role="tabpanel" aria-labelledby="tab-conflitos" hidden>
+            <div class="card">
+                <h2><span class="emoji">⚔️</span>Resolução de Conflitos</h2>
+                <p>Conflitos acontecem quando duas pessoas modificam a mesma linha. Veja como resolver!</p>
+            </div>
+
+            <div class="alert alert-warning">
+                <strong>🚨 O que é um Conflito?</strong><br>Ocorre quando você tenta fazer merge de duas branches que modificaram a mesma linha de código.
+            </div>
+
+            <div class="card">
+                <h3>📋 Cenário Típico de Conflito</h3>
+                <p><strong>Você:</strong> Cria uma função chamada <span class="code-highlight">calcular()</span></p>
+                <p><strong>Seu colega:</strong> Modifica a mesma função</p>
+                <p><strong>Resultado:</strong> Conflito ao fazer merge!</p>
+            </div>
+
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Git Avisa o Conflito</h4>
+                        <p>Você verá uma mensagem como:</p>
+                        <div class="command-box"><code>CONFLICT (content): Merge conflict in arquivo.js</code></div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Veja o Arquivo Conflitado</h4>
+                        <p>O arquivo mostrará algo assim:</p>
+                        <div class="command-box"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br>// Seu código aqui<br>=======<br>// Código do colega<br>&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-colega</code></div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Edite e Escolha</h4>
+                        <p>Abra o arquivo em seu editor e escolha qual código manter. Remova as linhas de marcação do Git.</p>
+                        <div class="alert alert-info">Você pode manter seu código, o do colega, ou combinar os dois!</div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Commit da Resolução</h4>
+                        <p>Adicione e faça commit normalmente:</p>
+                        <div class="command-box"><code>git add arquivo.js<br>git commit -m "Resolver conflito em arquivo.js"</code></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-success">
+                <strong>✅ Dicas para Evitar Conflitos:</strong><br>
+                • Faça <span class="code-highlight">git pull</span> frequentemente<br>
+                • Comunique com seu time sobre mudanças<br>
+                • Use branches para features separadas<br>
+                • Revise Pull Requests cuidadosamente
+            </div>
+        </section>
+
+        <!-- BOAS PRÁTICAS -->
+        <section id="praticas" role="tabpanel" aria-labelledby="tab-praticas" hidden>
+            <div class="card">
+                <h2><span class="emoji">🎯</span>Boas Práticas de Git</h2>
+                <p>Siga estas práticas para se tornar um Git ninja!</p>
+            </div>
+
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h4>📝 Mensagens de Commit</h4>
+                    <p><strong>Bom:</strong> "Adicionar autenticação de 2FA"<br><strong>Ruim:</strong> "fix", "alterações", "atualizacao"<br><strong>Regra:</strong> Use imperativo, seja específico!</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🌿 Branches Organizadas</h4>
+                    <p><strong>Convenção:</strong><br>feature/novo-recurso<br>bugfix/corrigir-erro<br>hotfix/urgente<br><strong>Nunca:</strong> Trabalhe direto na main!</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>✅ Commits Pequenos</h4>
+                    <p>Faça commits frequentes com mudanças lógicas. Não coloque tudo em um commit gigante!</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🔍 Revise Antes de Push</h4>
+                    <p>Use <span class="code-highlight">git diff</span> e <span class="code-highlight">git log</span> para revisar antes de enviar.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🚫 .gitignore</h4>
+                    <p>Configure o arquivo .gitignore para não versionar:<br>node_modules/, .env, arquivos temporários</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>👥 Pull Requests</h4>
+                    <p>Sempre faça Pull Requests, nunca faça merge diretamente. Deixe seu time revisar!</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>📋 Checklist Antes de Push</h3>
+                <button class="toggle-btn" aria-expanded="false">▶ Mostrar checklist</button>
+                <div class="toggle-content" aria-live="polite">
+                    <label>
+                        <input type="checkbox"> Minhas mudanças estão corretas?
+                    </label>
+                    <label>
+                        <input type="checkbox"> Fiz pull da main antes?
+                    </label>
+                    <label>
+                        <input type="checkbox"> Minhas mensagens de commit são claras?
+                    </label>
+                    <label>
+                        <input type="checkbox"> Não estou commitando node_modules ou .env?
+                    </label>
+                    <label>
+                        <input type="checkbox"> Testei meu código?
+                    </label>
+                </div>
+            </div>
+
+            <div class="analogy-box">
+                <strong>💭 Pense assim:</strong>
+                <p>Escreva commits como se estivesse explicando para seu eu do futuro. Seja claro, seja específico, seja profissional!</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>🚀 Git na Prática - Guia Completo</strong></p>
+        <p>Baseado no tutorial original de Alex Donega, com melhorias e adições</p>
+        <p class="license">📄 MIT License - Sinta-se livre para usar, modificar e compartilhar</p>
+    </footer>
+
+    <script>
+        // Navigation
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const sections = document.querySelectorAll('section');
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        const setActiveSection = (sectionId, { scroll = true } = {}) => {
+            navButtons.forEach(btn => {
+                const isActive = btn.dataset.section === sectionId;
+                btn.classList.toggle('active', isActive);
+                btn.setAttribute('aria-selected', String(isActive));
+                btn.setAttribute('tabindex', isActive ? '0' : '-1');
+            });
+
+            sections.forEach(section => {
+                const isActive = section.id === sectionId;
+                section.classList.toggle('active', isActive);
+                section.toggleAttribute('hidden', !isActive);
+            });
+
+            if (scroll) {
+                if (prefersReducedMotion) {
+                    window.scrollTo(0, 0);
+                } else {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+        };
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const sectionId = button.dataset.section;
+                setActiveSection(sectionId);
+            });
+        });
+
+        const defaultSection = document.querySelector('.nav-btn.active')?.dataset.section || navButtons[0]?.dataset.section;
+        if (defaultSection) {
+            setActiveSection(defaultSection, { scroll: false });
+        }
+
+        // Toggle content
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
+        toggleBtns.forEach(btn => {
+            const content = btn.nextElementSibling;
+            if (content && content.classList.contains('toggle-content')) {
+                content.hidden = true;
+            }
+
+            btn.addEventListener('click', () => {
+                const contentEl = btn.nextElementSibling;
+                if (contentEl && contentEl.classList.contains('toggle-content')) {
+                    contentEl.classList.toggle('active');
+                    const isOpen = contentEl.classList.contains('active');
+                    contentEl.hidden = !isOpen;
+                    btn.textContent = isOpen ? '▼ Ocultar checklist' : '▶ Mostrar checklist';
+                    btn.setAttribute('aria-expanded', String(isOpen));
+                }
+            });
+        });
+
+        // Checkbox styling
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.style.marginRight = '8px';
+            checkbox.style.cursor = 'pointer';
+        });
+    </script>
+</body>
+</html>
+
